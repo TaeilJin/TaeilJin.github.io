@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://taeiljin.github.io/sitemap.xml
+Sitemap: https://TaeilJin.github.io/sitemap.xml
