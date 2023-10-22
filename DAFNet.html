@@ -25,7 +25,7 @@
 
 
   <title>Academic Project Page</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/img/chair.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -67,14 +67,14 @@
                   <div class="is-size-5 publication-authors">
                     <span class="author-block">Korea Advanced Institute of Science and Technology<br>Computer Graphics Forum (presented in Pacific Graphics 2023) </span>
                     <!--<span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
-                    
+
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        <a href="https://diglib.eg.org/handle/10.1111/cgf14962" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -83,7 +83,7 @@
                       </a>
                     </span>
 
-                    <!-- Supplementary PDF link -->
+                    <!-- 
                     <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
@@ -93,6 +93,7 @@
                       <span>Supplementary</span>
                     </a>
                   </span>
+                  Supplementary PDF link -->
 
                   <!-- Github link -->
                   <span class="link-block">
@@ -101,11 +102,11 @@
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code</span>
+                    <span>Code & Dataset (soon be published)</span>
                   </a>
                 </span>
 
-                <!-- ArXiv abstract Link -->
+                <!-- 
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
@@ -114,7 +115,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span>ArXiv abstract Link -->
             </div>
           </div>
         </div>
@@ -130,11 +131,11 @@
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
+        <source src="static/videos/paper1205_mm.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+         
       </h2>
     </div>
   </div>
@@ -149,7 +150,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            We present DAFNet, a novel data-driven framework capable of generating various actions for indoor environment interactions. By taking desired root and upper-body poses as control inputs, DAFNet generates whole-body poses suitable for furniture of various shapes and combinations. To enable the generation of diverse actions, we introduce an action predictor that automatically infers the probabilities of individual action types based on the control input and environment. The action predictor is learned in an unsupervised manner by training Gaussian Mixture Variational Autoencoder (GMVAE). Additionally, we propose a two-part normalizing flow-based pose generator that sequentially generates upper and lower body poses. This two-part model improves motion quality and the accuracy of satisfying conditions over a single model generating the whole body. Our experiments show that DAFNet can create continuous character motion for indoor scene scenarios, and both qualitative and quantitative evaluations demonstrate the effectiveness of our framework.
           </p>
         </div>
       </div>
@@ -159,34 +160,38 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
+<!-- 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
-        <!-- Your image here -->
+        Image carousel -->
+        <!-- 
         <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           First image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
+        Your image here -->
+        <!-- 
         <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           Second image description.
         </h2>
       </div>
       <div class="item">
-        <!-- Your image here -->
+        Your image here -->
+        <!-- 
         <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
          Third image description.
        </h2>
      </div>
      <div class="item">
-      <!-- Your image here -->
+      Your image here -->
+      <!-- 
       <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
         Fourth image description.
@@ -196,22 +201,25 @@
 </div>
 </div>
 </section>
+Your image here -->
 <!-- End image carousel -->
 
 
 
 
-<!-- Youtube video -->
+<!-- 
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
-      <!-- Paper video. -->
+      Youtube video -->
+      <!-- 
       <h2 class="title is-3">Video Presentation</h2>
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           
           <div class="publication-video">
-            <!-- Youtube embed code here -->
+            Paper video. -->
+            <!-- 
             <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
@@ -219,10 +227,10 @@
     </div>
   </div>
 </section>
+Youtube embed code here -->
 <!-- End youtube video -->
 
-
-<!-- Video carousel -->
+<!--
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
@@ -230,21 +238,24 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
           <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
+            Video carousel -->
+            <!-- 
             <source src="static/videos/carousel1.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video2">
           <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
+            Your video file here -->
+            <!-- 
             <source src="static/videos/carousel2.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video3">
           <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
+            Your video file here -->
+            <!-- 
             <source src="static/videos/carousel3.mp4"
             type="video/mp4">
           </video>
@@ -253,6 +264,7 @@
     </div>
   </div>
 </section>
+Your video file here -->
 <!-- End video carousel -->
 
 
@@ -260,7 +272,7 @@
 
 
 
-<!-- Paper poster -->
+<!-- 
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
@@ -272,14 +284,22 @@
       </div>
     </div>
   </section>
+Paper poster -->
 <!--End paper poster -->
-
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@article {10.1111:cgf.14962,
+        journal = {Computer Graphics Forum},
+        title = {{DAFNet: Generating Diverse Actions for Furniture Interaction by Learning Conditional Pose Distribution}},
+        author = {Jin, Taeil and Lee, Sung-Hee},
+        year = {2023},
+        publisher = {The Eurographics Association and John Wiley & Sons Ltd.},
+        ISSN = {1467-8659},
+        DOI = {10.1111/cgf.14962}
+        }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
