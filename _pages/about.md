@@ -25,5 +25,3 @@ I am so much interested in generating human-like interaction for human or furnit
 I am a `Postdoc`. in KAIST [LAVA Lab.](https://lava.kaist.ac.kr/) and figuring out the `AI-based method` to generate `human-like character's movement`.
 
 I hope that my research shows `the future scene` that user's surrogate is interacting with real-space and real-human. 
-
-[index page](/publications/)
