@@ -2,8 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://lava.kaist.ac.kr/'>Affiliations</a>. Address. Contacts. Moto. Etc.
-
+subtitle: <a href='https://lava.kaist.ac.kr/'>Affiliations</a>. Currently in Daejeon, South Korea. 
 profile:
   align: right
   image: profile_square.png
