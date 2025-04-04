@@ -16,9 +16,9 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 Hello all! 
-I am so much interested in generating human-like interaction for human or furniture.
+I am so much interested in generating human-like interaction for human or furniture. These days, I am trying to deploy our motion data into the real robot structure.
 
-I am a `Postdoc`. in KAIST [LAVA Lab.](https://lava.kaist.ac.kr/) and figuring out the `AI-based method` to generate `human-like character's movement`.
+<!-- I am a `Postdoc`. in KAIST [LAVA Lab.](https://lava.kaist.ac.kr/) and figuring out the `AI-based method` to generate `human-like character's movement`. -->
 
 I hope that my research shows `the future scene` that user's surrogate is interacting with real-space and real-human. 
 
