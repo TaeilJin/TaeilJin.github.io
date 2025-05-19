@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Paper "InterFaceRays: Interaction‐Oriented Furniture Surface Representation for Human Pose Retargeting” is accepted to Pacific Graphics 2025
+Paper "InterFaceRays: Interaction‐Oriented Furniture Surface Representation for Human Pose Retargeting” is accepted to Eurographics 2025
