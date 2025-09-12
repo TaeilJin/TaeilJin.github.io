@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Currently in Seoul, South Korea. #<a href='https://lava.kaist.ac.kr/'>Affiliations</a>.
+subtitle: I am currently an assistant professor at Chung-Ang University in South Korea. #<a href='https://lava.kaist.ac.kr/'>Affiliations</a>.
 profile:
   align: right
   image: profile_square.png

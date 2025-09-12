@@ -4,7 +4,7 @@ permalink: /cv/
 title: cv
 nav: true
 nav_order: 4
-cv_pdf: cv_latex_taeil.pdf
+cv_pdf: cv_latex_taeil_cau.pdf
 description: You can download the CV PDF file with pressing the up-right button.
 toc:
   sidebar: left
