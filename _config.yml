@@ -234,6 +234,15 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  # -----------------------------------------------------------------------------
+  # Custom baseurl for sub-site (creallab)
+  # -----------------------------------------------------------------------------
+  - scope:
+      path: "creallab"
+    values:
+      baseurl: "/creallab"
+      title: "CReAL Lab"
+      description: "Coexistent Reality and Intelligent Agents Lab"
 
 sass:
   style: compressed
@@ -416,14 +425,3 @@ jsonresume:
   - interests
   - references
 
-# -----------------------------------------------------------------------------
-# Custom baseurl for sub-site (creallab)
-# -----------------------------------------------------------------------------
-
-defaults:
-  - scope:
-      path: "creallab"
-    values:
-      baseurl: "/creallab"
-      title: "CReAL Lab"
-      description: "Coexistent Reality and Intelligent Agents Lab"
