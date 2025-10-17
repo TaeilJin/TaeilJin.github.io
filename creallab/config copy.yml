@@ -1,0 +1,20 @@
+# Setup
+title:               CReAL
+tagline:             'CReAL'
+description:         'Embrace the journey. Trust the process. Enjoy the results.'
+url: "https://taeiljin.github.io"
+baseurl: "/creallab"
+paginate:            5
+permalink:           pretty
+
+# Gems
+plugins:
+  - jekyll-paginate
+
+# Custom vars
+version:             1.1.0
+google_analytics_id: #UA-XXXX-Y
+
+# Custom CSS
+include:
+  - assets/css/custom.css
