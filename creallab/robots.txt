@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://taeiljin.github.io/creallab/sitemap.xml
