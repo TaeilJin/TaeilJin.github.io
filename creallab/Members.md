@@ -4,4 +4,4 @@ title: Members
 permalink: /members/
 ---
 
-{% include members.html %}
+{% include creallab/members.html %}
