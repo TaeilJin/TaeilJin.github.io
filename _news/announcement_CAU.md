@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I am starting my new jearney at Chung-Ang University in Korea.
+I am beginning my new journey at Chung-Ang University in Korea.

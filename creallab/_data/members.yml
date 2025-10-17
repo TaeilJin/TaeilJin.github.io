@@ -1,0 +1,23 @@
+director:
+- name: Taeil Jin
+  title: Assistant Professor
+  img: /assets/img/taeil.png
+  page: https://taeiljin.github.io
+  cv: 
+
+graduate_students:
+  #- name: Alex Jin
+  #  title: M.S. Student
+  #  img: /assets/img/taeil.png
+  #  page: 
+  
+undergraduate_students:
+  #- name: Alex JAng
+  #  title: B.A. Student
+  #  img: /assets/img/taeil.png
+  #  page: https://example.com
+  
+  #- name: Miguel
+  #  title: B.A. Student
+  #  img: /assets/img/taeil.png
+  #  page: https://example.com
