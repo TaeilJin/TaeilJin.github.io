@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>음악 순위 예측</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@300;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --accent: #ff4d6d;
+    --accent2: #ff8fa3;
+    --gold: #ffd166;
+    --text: #f0f0f5;
+    --muted: #6b6b80;
+    --border: #2a2a38;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 60% 20%, rgba(255,77,109,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,209,102,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .year-badge {
+    display: inline-block;
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .title {
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    animation: fadeDown 0.6s 0.1s ease both;
+  }
+
+  .title span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    line-height: 1.6;
+    animation: fadeDown 0.6s 0.2s ease both;
+  }
+
+  .song-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    animation: fadeDown 0.6s 0.3s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .song-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+
+  .album-art {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(255,77,109,0.3);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(255,77,109,0.3); }
+    50% { box-shadow: 0 4px 24px rgba(255,77,109,0.5); }
+  }
+
+  .song-info .song-title {
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .song-info .song-artist {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .song-info .song-year {
+    font-size: 11px;
+    color: var(--accent2);
+    margin-top: 4px;
+  }
+
+  .question {
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--text);
+    animation: fadeDown 0.6s 0.4s ease both;
+  }
+
+  .rank-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 28px;
+    animation: fadeDown 0.6s 0.5s ease both;
+  }
+
+  .rank-btn {
+    aspect-ratio: 1;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    color: var(--muted);
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rank-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255,77,109,0.08);
+    transform: translateY(-2px);
+  }
+
+  .rank-btn.selected {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(255,77,109,0.4);
+  }
+
+  .selected-display {
+    text-align: center;
+    margin-bottom: 24px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeDown 0.6s 0.6s ease both;
+  }
+
+  .selected-text {
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+
+  .selected-text.active {
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  .selected-text .big-num {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--accent), #ff8fa3);
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    animation: fadeDown 0.6s 0.7s ease both;
+    letter-spacing: 1px;
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,77,109,0.4);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .success-screen {
+    display: none;
+    text-align: center;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .success-emoji {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: block;
+    animation: bounceIn 0.6s ease both;
+  }
+
+  .success-title {
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .success-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .submitted-rank {
+    display: inline-block;
+    font-family: 'Gmarket Sans', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 16px 0;
+  }
+
+  .submitted-rank span {
+    font-size: 20px;
+    color: var(--muted);
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounceIn {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  .already-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .already-msg .emoji { font-size: 48px; margin-bottom: 16px; display: block; }
+  .already-msg p { font-family: 'Gmarket Sans', sans-serif; font-size: 16px; color: var(--muted); }
+  .already-msg strong { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 입력 화면 -->
+  <div id="inputScreen">
+    <div class="year-badge">🎵 2004 Chart</div>
+    <h1 class="title">이 노래는<br><span>몇 위</span>일까요?</h1>
+    <p class="subtitle">방금 들은 곡이 2004년 연간차트<br>TOP 10 중 몇 위인지 예측해보세요.</p>
+
+    <div class="song-card">
+      <div class="album-art">🎶</div>
+      <div class="song-info">
+        <div class="song-title">? ? ?</div>
+        <div class="song-artist">방금 들은 그 곡</div>
+        <div class="song-year">2004년 발매 · 연간차트 TOP 10</div>
+      </div>
+    </div>
+
+    <p class="question">1위부터 10위 중 예측 순위를 선택하세요</p>
+
+    <div class="rank-grid">
+      <button class="rank-btn" onclick="selectRank(1)">1</button>
+      <button class="rank-btn" onclick="selectRank(2)">2</button>
+      <button class="rank-btn" onclick="selectRank(3)">3</button>
+      <button class="rank-btn" onclick="selectRank(4)">4</button>
+      <button class="rank-btn" onclick="selectRank(5)">5</button>
+      <button class="rank-btn" onclick="selectRank(6)">6</button>
+      <button class="rank-btn" onclick="selectRank(7)">7</button>
+      <button class="rank-btn" onclick="selectRank(8)">8</button>
+      <button class="rank-btn" onclick="selectRank(9)">9</button>
+      <button class="rank-btn" onclick="selectRank(10)">10</button>
+    </div>
+
+    <div class="selected-display">
+      <div class="selected-text" id="selectedText">순위를 선택해주세요</div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" disabled onclick="submitVote()">
+      예측 제출하기
+    </button>
+  </div>
+
+  <!-- 완료 화면 -->
+  <div class="success-screen" id="successScreen">
+    <span class="success-emoji">🎯</span>
+    <h2 class="success-title">예측 완료!</h2>
+    <div class="submitted-rank" id="submittedRank">—<span>위</span></div>
+    <p class="success-subtitle">수업이 끝날 때<br>정답을 함께 확인해봐요 👀</p>
+  </div>
+
+  <!-- 이미 제출 화면 -->
+  <div class="already-msg" id="alreadyScreen">
+    <span class="emoji">✅</span>
+    <p>이미 <strong id="alreadyRank">?</strong>위로<br>예측을 제출했어요!</p>
+  </div>
+
+</div>
+
+<script>
+  const FIREBASE_URL = 'https://databasemath-2b0d6-default-rtdb.firebaseio.com';
+  const STORAGE_KEY = 'wheelilili_vote_2004';
+  let selectedRank = null;
+
+  window.onload = function() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const data = JSON.parse(saved);
+      document.getElementById('inputScreen').style.display = 'none';
+      document.getElementById('alreadyScreen').style.display = 'block';
+      document.getElementById('alreadyRank').textContent = data.rank;
+    }
+  };
+
+  function selectRank(rank) {
+    selectedRank = rank;
+    document.querySelectorAll('.rank-btn').forEach((btn, i) => {
+      btn.classList.toggle('selected', i + 1 === rank);
+    });
+    const sel = document.getElementById('selectedText');
+    sel.innerHTML = `<span class="big-num">${rank}</span>위 예측`;
+    sel.classList.add('active');
+    document.getElementById('submitBtn').disabled = false;
+  }
+
+  async function submitVote() {
+    if (!selectedRank) return;
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '제출 중...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`${FIREBASE_URL}/votes.json`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rank: selectedRank, time: Date.now() })
+      });
+      if (!res.ok) throw new Error('저장 실패');
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ rank: selectedRank, timestamp: Date.now() }));
+
+      document.getElementById('inputScreen').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('submittedRank').innerHTML = `${selectedRank}<span>위</span>`;
+
+    } catch(e) {
+      console.error('저장 실패:', e);
+      btn.textContent = '다시 시도하기';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
